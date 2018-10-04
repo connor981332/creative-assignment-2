@@ -1,17 +1,39 @@
-$("#submitButton").click(function(e){
-  var value = $("#cityText").val();
-  console.log(value);
-  e.preventDefault();
-  $("#selectedCity").text(value);
-  //insert API call here:
-  var myurl = 'http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=A908D64B6C335B82CFF622D642C7814F&steamid=76561197960434622&format=json';
-  myurl += value;
-  console.log(myurl);
-  $.ajax({
-    url : myurl,
-    dataType : "json",
-        success : function(parsed_json) {
-            var location = parsed_json['name'];
+$(document).ready(function() {
+  console.log("Page is loaded");
+  $("#submitButton").click(function(e) {
+    e.preventDefault();
+
+    //Read from form
+    console.log("Submit button clicked")
+    var username = $("#steamaccountid").val();
+    console.log(username);
+
+    //1st API call
+    var myurl1 = 'http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=A908D64B6C335B82CFF622D642C7814F&vanityurl=';
+    myurl1 += username;
+    console.log("First call:" + myurl1);
+    var userId;
+    $.ajax({
+      url: myurl1,
+      dataType: "json",
+      success: function(parsed_json) {
+        console.log(parsed_json);
+        userId = parsed_json['response']['steamid'];
+        console.log("User ID: " + userId);
+
+        //2nd API call
+        var myurl2 = 'http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=A908D64B6C335B82CFF622D642C7814F&steamid=';
+        myurl2 += userId;
+        myurl2 += '&format=json'
+        console.log("Second call: " + myurl2);
+        $.ajax({
+          url: myurl2,
+          dataType: "json",
+          success: function(parsed_json) {
+            console.log(parsed_json);
+            //TODO: Work with returned data here
+
+            /*var location = parsed_json['name'];
             var weather = parsed_json['weather'][0]['main'];
             var temp = parsed_json['main']['temp'];
             var weather_icon = parsed_json['weather'][0]['icon'];
@@ -28,8 +50,13 @@ $("#submitButton").click(function(e){
             everything += "<li>Wind: " + wind_speed + " mph";
             everything += "</ul>";
             $("#weather").html(everything);
-            console.log("name="+location);
-            console.log("temp="+temp);
-        }
+            console.log("name=" + location);
+            console.log("temp=" + temp);*/
+          }
+        });
+      }
+    })
+
+
   });
 });

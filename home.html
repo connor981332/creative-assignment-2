@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Video Game Health</title>
-  </head>
-  <body>
 
-    <h1>Are you playing too many video games?</h1>
-    <p>Enter your steam account below to find out!</p>
+<head>
+  <title>Video Game Health</title>
 
-    <form>
-      Steam Account:<br>
-      <input type="text" name="steamaccountid" value="">
-      <br>
-      <input type="submit" value="Go!">
-    </form>
-    <!--Steam API KEY: A908D64B6C335B82CFF622D642C7814F -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="home.css">
 
-  </body>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="home.js"></script>
+</head>
+
+<body id="myPage">
+
+  <h1>Are you playing too many video games?</h1>
+  <p>Enter your steam account below to find out!</p>
+
+  <form>
+    Steam Account:<br>
+    <input type="text" id="steamaccountid" value="">
+    <br>
+    <input type="submit" id="submitButton" value="Go!">
+  </form>
+  <!--Steam API KEY: A908D64B6C335B82CFF622D642C7814F -->
+
+  <div></div>
+
+
+  <footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a><br><br>
+    <p>Created by Connor Bunch and Nathan Tucker for BYU CS 260</p>
+  </footer>
+</body>
+
 </html>
-
-<script src="./home.js">
-</script>
