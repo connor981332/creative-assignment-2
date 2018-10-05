@@ -14,6 +14,7 @@ $(document).ready(function() {
     console.log("First call:" + myurl1);
     var userId;
     var accountFound;
+    var usingNativeID = false;
     $.ajax({
       url: myurl1,
       dataType: "json",
@@ -23,7 +24,14 @@ $(document).ready(function() {
         console.log("User ID: " + userId);
         accountFound = parsed_json['response']['success'];
         console.log("Account Found Status: " + accountFound);
-        if (accountFound != 1) {
+        if ($("#nativeIDBox").val() == "on") {
+          usingNativeID = true;
+          userId = username;
+          console.log("UserID has been changed to :" + userId);
+        }
+        console.log("UsingNativeID Value: " + usingNativeID);
+        console.log($("#nativeIDBox").val())
+        if (accountFound != 1 && usingNativeID == false) {
           $("#returnData").html("<p>Steam account not found. Please try again.</p>");
         } else {
           //2nd API call
