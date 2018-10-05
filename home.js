@@ -20,7 +20,7 @@ $(document).ready(function() {
         console.log(parsed_json);
         userId = parsed_json['response']['steamid'];
         console.log("User ID: " + userId);
-        accountFound = parsed_json['response']['success']
+        accountFound = parsed_json['response']['success'];
         console.log(accountFound);
         if (accountFound != 1) {
           $("#returnData").html("<p>Steam account not found. Please try again.</p>");
