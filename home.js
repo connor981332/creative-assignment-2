@@ -22,24 +22,38 @@ $(document).ready(function() {
         userId = parsed_json['response']['steamid'];
         console.log("User ID: " + userId);
         accountFound = parsed_json['response']['success'];
-        console.log(accountFound);
+        console.log("Account Found Status: " + accountFound);
         if (accountFound != 1) {
           $("#returnData").html("<p>Steam account not found. Please try again.</p>");
-        };
-
-        //2nd API call
-        var myurl2 = 'http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=A908D64B6C335B82CFF622D642C7814F&steamid=';
-        myurl2 += userId;
-        myurl2 += '&format=json'
-        console.log("Second call: " + myurl2);
-        $.ajax({
-          url: myurl2,
-          dataType: "json",
-          success: function(parsed_json) {
-            console.log(parsed_json);
-            //TODO Do some stuff with returned data
-          }
-        });
+        } else {
+          //2nd API call
+          var myurl2 = 'http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=A908D64B6C335B82CFF622D642C7814F&steamid=';
+          myurl2 += userId;
+          myurl2 += '&format=json'
+          console.log("Second call: " + myurl2);
+          var minutesPlayed = 0;
+          var numGames;
+          $.ajax({
+            url: myurl2,
+            dataType: "json",
+            success: function(parsed_json) {
+              console.log(parsed_json);
+              numGames = parsed_json["response"]["total_count"];
+              console.log("Games played in past two weeks: " + numGames);
+              for (i = 0; i < numGames; i++) {
+                minutesPlayed += parsed_json["response"]["games"][i]["playtime_2weeks"];
+                console.log("Hours played so far: " + minutesPlayed);
+              }
+              console.log("Total play time: " + minutesPlayed);
+              everything = "<p>";
+              everything += "You have played an average of ";
+              everything += ((minutesPlayed / 60) / 2);
+              everything += " hours of video games per week during the last two weeks.";
+              everything += "</p>";
+              $("#returnData").html(everything);
+            }
+          });
+        }
       }
     })
 
