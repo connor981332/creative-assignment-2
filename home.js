@@ -24,8 +24,8 @@ $(document).ready(function() {
         console.log("User ID: " + userId);
         accountFound = parsed_json['response']['success'];
         console.log("Account Found Status: " + accountFound);
-        console.log("Check box value: " + $("#nativeIDBox").val());
-        if ($("#nativeIDBox").val() == "on") {
+        console.log("Check box value: " + nativeIDBox.checked);
+        if (nativeIDBox.checked == true) {
           usingNativeID = true;
           userId = username;
           console.log("UserID has been changed to :" + userId);
