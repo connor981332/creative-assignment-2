@@ -1,0 +1,29 @@
+.container-fluid {
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.bg-1 {
+    text-align: center;
+    background-color: #ffb31a;
+}
+
+.bg-2 {
+    text-align: center;
+    background-color: #336699;
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+.bg-3 {
+    text-align: center;
+    
+}
+
+#steamaccountid{
+    color:black;
+}
+
+#submitButton{
+    color:black;
+}
