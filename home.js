@@ -20,6 +20,10 @@ $(document).ready(function() {
         console.log(parsed_json);
         userId = parsed_json['response']['steamid'];
         console.log("User ID: " + userId);
+        accountFound = parsed_json['response']['success']
+        if (accountFound != 1) {
+          $("#returnData").html("<p>Steam account not found. Please try again.</p>");
+        }
 
         //2nd API call
         var myurl2 = 'http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=A908D64B6C335B82CFF622D642C7814F&steamid=';
@@ -31,7 +35,7 @@ $(document).ready(function() {
           dataType: "json",
           success: function(parsed_json) {
             console.log(parsed_json);
-            //TODO: Work with returned data here
+            //TODO Do some stuff with returned data
           }
         });
       }
