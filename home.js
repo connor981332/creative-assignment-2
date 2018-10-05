@@ -53,12 +53,26 @@ $(document).ready(function() {
                 console.log("Hours played so far: " + minutesPlayed);
               }
               console.log("Total play time: " + minutesPlayed);
+              var hoursAverage = ((minutesPlayed / 60) / 2);
               everything = "<p>";
               everything += "You have played an average of ";
-              everything += ((minutesPlayed / 60) / 2);
+              everything += hoursAverage;
               everything += " hours of video games per week during the last two weeks.";
               everything += "</p>";
               $("#returnData").html(everything);
+              var analysis = "<p>";
+              analysis += "Let's see how you stack up...";
+              analysis += "</p>";
+              if (hoursAverage < 5) {
+                analysis += "<p id=\"status\">Status: HEALTHY</p>";
+              } else if (hoursAverage < 10) {
+                analysis += "<p id=\"status\">Status: AVERAGE</p>";
+              } else if (hoursAverage < 20) {
+                analysis += "<p id=\"status\">Status: YOU PROBABLY PLAY TOO MUCH</p>";
+              } else {
+                analysis += "<p id=\"status\">Status: LOSER</p>";
+              }
+              $("#analysis").html(analysis);
             }
           });
         }
