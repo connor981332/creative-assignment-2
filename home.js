@@ -65,12 +65,21 @@ $(document).ready(function() {
               analysis += "</p>";
               if (hoursAverage < 5) {
                 analysis += "<p id=\"status\">Status: HEALTHY</p>";
+                analysis += "<img src=\"http://lerablog.org/wp-content/uploads/2014/03/guy-running.jpg\" alt=\"Healthy\" style=\"width:300px\">";
+                analysis += "<p id= \"statusParagraph\">You're pretty moderate in your video game habits. Great job! Keep up the good work.</p>";
               } else if (hoursAverage < 10) {
                 analysis += "<p id=\"status\">Status: AVERAGE</p>";
+                analysis += "<img src=\"https://memegenerator.net/img/images/600x600/15251543/old-man-shrug.jpg\" alt=\"Average\" style=\"width:300px\">";
+                analysis += "<p id= \"statusParagraph\">You're probably about average. Make sure that you are getting lots of physical activity.</p>";
               } else if (hoursAverage < 20) {
                 analysis += "<p id=\"status\">Status: YOU PROBABLY PLAY TOO MUCH</p>";
+                analysis += "<img src=\"http://www.fatlossmentality.com/wp-content/uploads/2013/01/iStock_000020595612XSmall.jpg\" alt=\"Too Much\" style=\"width:300px\">";
+                analysis += "<p id= \"statusParagraph\">You're spending too much time playing video games each week. "
+                analysis += "It would be a good idea to tone it down a bit. Go and do something outside instead of sitting down at the computer. Go on a hike. Ride your bike. Hang out with friends.</p>";
               } else {
                 analysis += "<p id=\"status\">Status: LOSER</p>";
+                analysis += "<img src=\"https://yt3.ggpht.com/-VdS7T35A-lA/AAAAAAAAAAI/AAAAAAAAAAA/Xl0Jv4nDXPo/s900-c-k-no/photo.jpg\" alt=\"Loser\" style=\"width:300px\">";
+                analysis += "<p id= \"statusParagraph\">You are in dire need of restructing your life. In fact, you need to get a life. Take your computer, and throw it in the trash. Your body and mind will thank you.</p>";
               }
               $("#analysis").html(analysis);
             }
