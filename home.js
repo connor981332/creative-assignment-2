@@ -13,6 +13,7 @@ $(document).ready(function() {
     myurl1 += username;
     console.log("First call:" + myurl1);
     var userId;
+    var accountFound;
     $.ajax({
       url: myurl1,
       dataType: "json",
